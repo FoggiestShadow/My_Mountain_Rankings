@@ -1,0 +1,46 @@
+mountain = {
+  aspen_mountain: 8,
+  copper: 8,
+  highland: 7,
+  winter_park: 9,
+  buttermilk: 7,
+  taos: 8,
+  steamboat: 9
+  } 
+
+puts "What are you trying to do? (add,update,display,delete)"
+choice = gets.chomp
+case choice
+  when "add"
+  puts "What is the name of the mountain?"
+  name = gets.chomp
+  puts "What did you think of this mountain? 1-10"
+  rating = gets.chomp
+  if mountain[name.to_sym] = nil
+  mountain[name.to_sym] = rating.to_i
+  else
+    puts "You already have this mountain in your database pal"
+  end
+  when "update"
+  puts "Which mountain rating should be updated??"
+  name = gets.chomp
+  if mountain[name] = nil
+    puts "Have you ever been to this mountain?"
+  else 
+    puts "What would you rate this one now?"
+    rating = gets.chomp
+    mountain[name.to_sym] = rating.to_i
+  end
+  when "display"
+  mountain.each { |name, rating| puts "#{name}: #{rating}"}
+  when "delete"
+  puts "What mountain?"
+  name = gets.chomp
+  if mountain[name] = nil
+    puts "Have you been to this mountain before?"
+  else
+    mountain.delete(name)
+  end
+else 
+  puts "You need to type add, update, display, or delete...I am a very basic program, sorry"
+end 
